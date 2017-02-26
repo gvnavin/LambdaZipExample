@@ -1,0 +1,34 @@
+group 'com.testlambdazip'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.5
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+
+    //http://docs.aws.amazon.com/lambda/latest/dg/create-deployment-pkg-zip-java.html
+    compile (
+            'com.amazonaws:aws-lambda-java-core:1.1.0',
+            'com.amazonaws:aws-lambda-java-events:1.1.0'
+    )
+
+    //Creating .zip Using Gradle Using Local Jars
+    //compile fileTree(dir: 'jars', include: '*.jar')
+}
+
+//project-dir/build/distributions/project-dir.zip
+task buildZip(type: Zip) {
+    from compileJava
+    from processResources
+    into('lib') {
+        from configurations.runtime
+    }
+}
+
+build.dependsOn buildZip
