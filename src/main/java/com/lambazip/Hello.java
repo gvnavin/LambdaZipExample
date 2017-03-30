@@ -10,8 +10,8 @@ public class Hello {
 
     public String myHandler(int myCount, Context context) {
         LambdaLogger logger = context.getLogger();
-        logger.log("received : " + myCount);
-        return String.valueOf(myCount);
+        logger.log("Hello received v2 : " + myCount + 100);
+        return String.valueOf(myCount + 100);
     }
 
 }

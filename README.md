@@ -34,3 +34,16 @@ The Zip will be created inside
 LambdaZipExample/build/distributions/testlambdazip-1.0-SNAPSHOT.zip
 
 The Zip will contain libs folder which will contain all the dependant libraries and the class files which are part of this project.
+
+While testing just give some number.
+
+Give 3 as input, you will get 
+"received : 3" in logs 
+"3" as an output
+
+Created a second handler Hello2::hello2Handler 
+Created a zip with 2 handlers and uploaded one zip to s3 bucket
+
+Created a 2 Lambda function points to same zip in s3 bucket but different handlers.
+It works.
+
